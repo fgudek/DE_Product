@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="FUNCTIONAL_TEST_MF2_Test_Suite" parallel="false" configfailurepolicy="skip" thread-count="5"
+       skipfailedinvocationcounts="false" data-provider-thread-count="10"
+       group-by-instances="false" preserve-order="true" allow-return-values="false">
+
+    <listeners>
+        <listener class-name="testSetup.reportSetup.NGTestListener"/>
+    </listeners>
+
+    <test name="FunctionalTest">
+        <classes>
+            <class name="testRunners.FunctionalTestRunner"/>
+        </classes>
+    </test>
+
+</suite>
