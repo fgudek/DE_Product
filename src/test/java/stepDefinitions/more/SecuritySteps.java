@@ -104,6 +104,42 @@ public class SecuritySteps extends Base {
     @Then("change Limits per transaction")
     public void changeLimitsPerTransaction() {
         security
-                .limitsPerTransaction();
+                .limitsPerTransaction("LimitPerTransactionNew");
     }
+
+    @Then("change Limits per day")
+    public void changeLimitsPerDay() {
+        security
+                .limitsPerDay("LimitPerDayNew");
+    }
+
+    @Then("change Limits per month")
+    public void changeLimitsPerMonth() {
+        security
+                .limitsPerMonth("LimitsPerMonthNew");
+    }
+
+    @Then("change total number of transactions per MONTH")
+    public void changeTotalNumberOfTransactionsPerMONTH() {
+        security
+                .limitsPerMonthTotal("TotalNumOfTransPerMonthNew");
+    }
+
+    @Then("change total number of transactions per DAY")
+    public void changeTotalNumberOfTransactionsPerDAY() {
+        security
+                .numberofTransPerday("TotalNumOfTransPerDayNew");
+    }
+
+    @Then("revert to default values")
+    public void revertToDefaultValues() {
+        security
+                .limitsPerTransaction("LimitPerTransactiondDefault")
+                .limitsPerDay("LimitPerDayDefault")
+                .numberofTransPerday("TotalNumOfTransPerDayDefault")
+                .limitsPerMonth("LimitsPerMonthDefault")
+                .limitsPerMonthTotal("TotalNumOfTransPerMonthDefault");
+    }
+
+
 }

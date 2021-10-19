@@ -21,6 +21,8 @@ public class Security extends Base {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
+    // change PIN
+
     @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/button_ok")
     @AndroidFindBy(xpath = "//android.widget.ImageButton[@resource-id='hr.asseco.android.ui.demo.de:id/button_ok']")
     public WebElement OKbtn;
@@ -58,19 +60,6 @@ public class Security extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = ""+s_settings__btn_mb_limits+"")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_settings__btn_mb_limits+"']")
-    public WebElement mBankingLimitsBtn;
-    @iOSXCUITFindBy(accessibility = ""+s_settings__title_mobile_banking_limits+"")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_settings__title_mobile_banking_limits+"']")
-    public WebElement mBankingLimitsTitle;
-    public Security mBankingLimits() {
-        scrollElementIntoView(mBankingLimitsBtn);
-        mBankingLimitsBtn.click();
-        sleep();
-        verifyPage(mBankingLimitsTitle, s_settings__title_mobile_banking_limits);
-        return this;
-    }
 
     @iOSXCUITFindBy(accessibility = ""+s_settings__btn_manage_biometrics+"")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_settings__btn_manage_biometrics+"']")
@@ -85,6 +74,8 @@ public class Security extends Base {
          verifyPage(useBiometricsTitle, s_settings__lbl_biometrics_use_biometrics);
         return this;
     }
+
+    // fast payment
 
     @iOSXCUITFindBy(accessibility = ""+s_settings__btn_fast_payments+"")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_settings__btn_fast_payments+"']")
@@ -109,10 +100,64 @@ public class Security extends Base {
         return this;
     }
 
+    //mbanking limits
+
+    @iOSXCUITFindBy(accessibility = ""+s_settings__btn_mb_limits+"")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_settings__btn_mb_limits+"']")
+    public WebElement mBankingLimitsBtn;
+    @iOSXCUITFindBy(accessibility = ""+s_settings__title_mobile_banking_limits+"")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_settings__title_mobile_banking_limits+"']")
+    public WebElement mBankingLimitsTitle;
+    public Security mBankingLimits() {
+        scrollElementIntoView(mBankingLimitsBtn);
+        mBankingLimitsBtn.click();
+        sleep();
+        verifyPage(mBankingLimitsTitle, s_settings__title_mobile_banking_limits);
+        return this;
+    }
+
+    //1
     @iOSXCUITFindBy(accessibility = "Max. individual transaction amount")
     @AndroidFindBy(xpath = "//android.widget.EditText[@content-desc='Max. individual transaction amount']")
     public WebElement limitsPerTrans;
     public Security limitsPerTransaction(String amount) {
+        typeInProperty(limitsPerTrans, amount);
         return this;
     }
+//2
+    @iOSXCUITFindBy(accessibility = "Total transaction amount per day")
+    @AndroidFindBy(xpath = "//android.widget.EditText[@content-desc='Total transaction amount per day']")
+    public WebElement limitsPerDay;
+    public Security limitsPerDay(String amount) {
+        typeInProperty(limitsPerDay, amount);
+        return this;
+    }
+//3
+    @iOSXCUITFindBy(accessibility = "Total number of transactions per day")
+    @AndroidFindBy(xpath = "//android.widget.EditText[@content-desc='Total number of transactions per day']")
+    public WebElement numberofTransPerday;
+    public Security numberofTransPerday(String amount) {
+        typeInProperty(numberofTransPerday, amount);
+        return this;
+    }
+//4
+    @iOSXCUITFindBy(accessibility = "Total transaction amount per month")
+    @AndroidFindBy(xpath = "//android.widget.EditText[@content-desc='Total transaction amount per month']")
+    public WebElement limitsPerMonth;
+    public Security limitsPerMonth(String amount) {
+        scrollElementIntoView(limitsPerMonth);
+        typeInProperty(limitsPerMonth, amount);
+        return this;
+    }
+//5
+    @iOSXCUITFindBy(accessibility = "Total transaction amount per month")
+    @AndroidFindBy(xpath = "//android.widget.EditText[@content-desc='Total number of transactions per month']")
+    public WebElement limitsPerMonthTotal;
+    public Security limitsPerMonthTotal(String amount) {
+        scrollElementIntoView(limitsPerMonthTotal);
+        typeInProperty(limitsPerMonthTotal, amount);
+        return this;
+    }
+
+
 }

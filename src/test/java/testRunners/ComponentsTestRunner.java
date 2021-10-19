@@ -25,7 +25,7 @@ import static testSetup.Base.*;
 @CucumberOptions(
         features="src/test/resources/features",
         glue={"stepDefinitions","testSetup"},
-        tags={"@SanityTest", "@PersonalDetails"},
+        tags={"@SanityTest", "@Notifications"},
         monochrome = true,
         strict = true,
         dryRun = false,
