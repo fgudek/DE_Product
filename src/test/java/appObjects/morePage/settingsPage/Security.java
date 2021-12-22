@@ -23,8 +23,8 @@ public class Security extends Base {
 
     // change PIN
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/button_ok")
-    @AndroidFindBy(xpath = "//android.widget.ImageButton[@resource-id='hr.asseco.android.ui.demo.de:id/button_ok']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/button_ok")
+    @AndroidFindBy(xpath = "//android.widget.ImageButton[@resource-id='hr.asseco.android.ui.demo.de.core:id/button_ok']")
     public WebElement OKbtn;
     @iOSXCUITFindBy(accessibility = "1")
     @AndroidFindBy(xpath = "//android.widget.Button[@text='1']")
@@ -91,8 +91,8 @@ public class Security extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/switchView")
-    @AndroidFindBy(xpath = "//android.widget.Switch[@resource-id='hr.asseco.android.ui.demo.de:id/switchView']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/switchView")
+    @AndroidFindBy(xpath = "//android.widget.Switch[@resource-id='hr.asseco.android.ui.demo.de.core:id/switchView']")
     public WebElement fastPaymentsturn;
     public Security turnFastPayment(String turn){
         wait(fastPaymentsturn);

@@ -1,5 +1,6 @@
 package testSetup;
 
+import appObjects.HomePage;
 import appObjects.NavigationBar;
 import appObjects.morePage.OurProducts;
 import appObjects.accountsPage.*;
@@ -114,6 +115,7 @@ public class Base {
     protected OurProducts products;
     protected mToken mtoken;
     protected AppAndPolicies appAndPolicies;
+    protected HomePage home;
 
     public static String activationCode;
 
@@ -935,7 +937,7 @@ public class Base {
 
         switch (platform.toUpperCase()) {
             case "ANDROID":
-                WebElement el1 = stringToElementById("hr.asseco.android.ui.demo.de:id/amount_visibility_button");
+                WebElement el1 = stringToElementById("hr.asseco.android.ui.demo.de.core:id/amount_visibility_button");
                 int attempt = 0;
 
                 while(!isTextPresent(objectDescription)){

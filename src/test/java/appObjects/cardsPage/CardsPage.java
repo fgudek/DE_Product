@@ -21,8 +21,8 @@ public class CardsPage extends Base {
     }
 
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/background_image")
-    @AndroidFindBy(xpath = "//android.widget.ImageView[@resource-id='hr.asseco.android.ui.demo.de:id/background_image']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/background_image")
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@resource-id='hr.asseco.android.ui.demo.de.core:id/background_image']")
     public WebElement card;
     @iOSXCUITFindBy(iOSNsPredicate = "name CONTAINS 'Available amount'")
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Available amount')]")
@@ -32,7 +32,7 @@ public class CardsPage extends Base {
     public CardsPage swipeCardLeft(){
 
       //  wait(card);
-        WebElement el1 = stringToElementById("hr.asseco.android.ui.demo.de:id/page_container");
+        WebElement el1 = stringToElementById("hr.asseco.android.ui.demo.de.core:id/page_container");
         swipeLeft(el1, 2000, 1.0);
 
         return this;
@@ -40,7 +40,7 @@ public class CardsPage extends Base {
 
     public CardsPage swipeTo(String svajp) {
         String crd = prop.getProperty(svajp);
-       // WebElement el1 = stringToElementById("hr.asseco.android.ui.demo.de:id/page_container");
+       // WebElement el1 = stringToElementById("hr.asseco.android.ui.demo.de.core:id/page_container");
         swipeToElementByText("left",crd,5);
         sleep();
        // cardsTitle.click();

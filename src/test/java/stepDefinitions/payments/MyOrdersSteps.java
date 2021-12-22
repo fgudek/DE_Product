@@ -70,4 +70,23 @@ public class MyOrdersSteps extends Base {
         payment
                 .selectAccount(acc);
     }
+
+
+    @Then("verify order")
+    public void verifyOrder() {
+        review
+                .verifyCanceledOrder();
+    }
+
+    @Then("search for order")
+    public void searchForOrder() {
+        payment
+                .searchOrder("executedOrder");
+    }
+
+    @Then("verify executed order")
+    public void verifyExecutedOrder() {
+        review
+                .verifyExecutedOrder();
+    }
 }

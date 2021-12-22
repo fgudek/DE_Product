@@ -29,8 +29,8 @@ public class PreLoginPage extends Base {
     }
 
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/language_button")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de:id/language_button']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/language_button")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de.core:id/language_button']")
     public WebElement langSelect;
     public PreLoginPage clickLanguageSelect() {
         wait(langSelect);
@@ -68,8 +68,8 @@ public class PreLoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/optionLocator")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de:id/optionLocator']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/optionLocator")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de.core:id/optionLocator']")
     public WebElement locationsBTN;
     public PreLoginPage locations() {
         wait(locationsBTN);
@@ -77,8 +77,8 @@ public class PreLoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/optionInbox")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de:id/optionInbox']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/optionInbox")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de.core:id/optionInbox']")
     public WebElement inboxBtn;
     public PreLoginPage inbox() {
         wait(inboxBtn);
@@ -86,8 +86,8 @@ public class PreLoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/optionProducts")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de:id/optionProducts']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/optionProducts")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de.core:id/optionProducts']")
     public WebElement productsBtn;
     @iOSXCUITFindBy(accessibility = "Products")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Products']")
@@ -100,8 +100,8 @@ public class PreLoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/optionExchange")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de:id/optionExchange']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/optionExchange")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de.core:id/optionExchange']")
     public WebElement exchangeListBtn;
     public PreLoginPage exchangeList() {
         wait(exchangeListBtn);
@@ -109,8 +109,8 @@ public class PreLoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/optionContacts")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de:id/optionContacts']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/optionContacts")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de.core:id/optionContacts']")
     public WebElement contactsBtn;
     public PreLoginPage contacts() {
         wait(contactsBtn);
@@ -127,8 +127,8 @@ public class PreLoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/optionMore")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de:id/optionMore']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/optionMore")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de.core:id/optionMore']")
     public WebElement moreBtn;
     public PreLoginPage preLoginMore() {
         wait(moreBtn);
@@ -136,8 +136,8 @@ public class PreLoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/m_banking_button")
-    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='hr.asseco.android.ui.demo.de:id/m_banking_button']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/m_banking_button")
+    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='hr.asseco.android.ui.demo.de.core:id/m_banking_button']")
     public WebElement loginBtn;
     public PreLoginPage clickLogin(){
         wait(loginBtn);
@@ -156,8 +156,8 @@ public class PreLoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/label")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de:id/label']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/label")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de.core:id/label']")
     public WebElement accountsTitle;
     public PreLoginPage verifyLogIn(){
         wait(accountsTitle);
@@ -173,8 +173,8 @@ public class PreLoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/optionToken")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de:id/optionToken']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/optionToken")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de.core:id/optionToken']")
     public WebElement mTokenBtn;
     @iOSXCUITFindBy(accessibility = ""+c_mtoken__title_token+"")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+c_mtoken__title_token+"']")
@@ -187,8 +187,8 @@ public class PreLoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/qr_code")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de:id/qr_code']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/qr_code")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de.core:id/qr_code']")
     public WebElement OTPBtn;
     @iOSXCUITFindBy(accessibility = ""+c_mtoken__lbl_OTP+"")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+c_mtoken__lbl_OTP+"']")
@@ -201,8 +201,8 @@ public class PreLoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/mds_code")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de:id/mds_code']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/mds_code")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de.core:id/mds_code']")
     public WebElement MDSBtn;
     @iOSXCUITFindBy(accessibility = ""+c_mtoken_mds__lbl_mds_input_1_title+"")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+c_mtoken_mds__lbl_mds_input_1_title+"']")
@@ -219,8 +219,8 @@ public class PreLoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/btn_generate_mds")
-    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='hr.asseco.android.ui.demo.de:id/btn_generate_mds']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/btn_generate_mds")
+    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='hr.asseco.android.ui.demo.de.core:id/btn_generate_mds']")
     public WebElement MDSgenerateBtn;
     @iOSXCUITFindBy(accessibility = ""+c_mtoken_mds_code_lbl_mds_code+"")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+c_mtoken_mds_code_lbl_mds_code+"']")
@@ -233,8 +233,8 @@ public class PreLoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/optionFastBalance")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de:id/optionFastBalance']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/optionFastBalance")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de.core:id/optionFastBalance']")
     public WebElement mBalanceBtn;
     public PreLoginPage mBalance() {
         mBalanceBtn.click();
@@ -242,8 +242,8 @@ public class PreLoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/titleAction")
-    @AndroidFindBy(xpath = "//android.widget.ImageView[@resource-id='hr.asseco.android.ui.demo.de:id/titleAction']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/titleAction")
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@resource-id='hr.asseco.android.ui.demo.de.core:id/titleAction']")
     public WebElement XBtn;
     public PreLoginPage clickX() {
         XBtn.click();
@@ -251,8 +251,8 @@ public class PreLoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/optionMcash")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de:id/optionMcash']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/optionMcash")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de.core:id/optionMcash']")
     public WebElement mCashBtn;
     @iOSXCUITFindBy(accessibility = ""+s_mcash__title_mcash+"")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_mcash__title_mcash+"']")
@@ -261,6 +261,59 @@ public class PreLoginPage extends Base {
         mCashBtn.click();
         sleep();
         verifyPage(mCashTitle, s_mcash__title_mcash);
+        return this;
+    }
+
+    @iOSXCUITFindBy(accessibility = "Inbox")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Inbox']")
+    public WebElement inboxTitle;
+    public PreLoginPage verifyInbox() {
+        wait(inboxTitle);
+        verifyPage(inboxTitle, "Inbox");
+        return this;
+
+    }
+
+    @iOSXCUITFindBy(accessibility = ""+s_inbox__title_notifications+"")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_inbox__title_notifications+"']")
+    public WebElement inboxNotifications;
+    public PreLoginPage inboxNotifications() {
+        inboxNotifications.click();
+
+        return this;
+        
+    }
+
+    @iOSXCUITFindBy(accessibility = "Inbox")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Streamlined')]")
+    public WebElement receivedNotification;
+    public PreLoginPage receivedNotification() {
+        scrollElementIntoView(receivedNotification);
+        receivedNotification.click();
+        sleep();
+        verifyPage(receivedNotification, "Streamlined");
+
+        return this;
+    }
+
+    @iOSXCUITFindBy(accessibility = "Messages")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Messages')]")
+    public WebElement inboxMessages;
+    public PreLoginPage inboxMessages() {
+               inboxMessages.click();
+
+        return this;
+    }
+
+    @iOSXCUITFindBy(accessibility = "process improvement")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'process improvement')]")
+    public WebElement receivedMessage;
+    public PreLoginPage receivedMessage() {
+        scrollElementIntoView(receivedMessage);
+        receivedMessage.click();
+        sleep();
+        verifyPage(receivedMessage, "process improvement");
+
         return this;
     }
 }

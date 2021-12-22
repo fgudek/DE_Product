@@ -9,6 +9,7 @@ import appObjects.preLoginObjects.LoginPage;
 import appObjects.preLoginObjects.PreLoginPage;
 import appObjects.morePage.settingsPage.Security;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import testSetup.Base;
@@ -235,5 +236,36 @@ public class PreLoginSteps extends Base {
     public void clickMCash() {
         preLogin
                 .mCash();
+    }
+
+
+    @Then("verify Inbox")
+    public void verifyInbox() {
+        preLogin
+                .verifyInbox();
+    }
+
+    @Then("go to inbox notifications")
+    public void goToInboxNotifications() {
+        preLogin
+                .inboxNotifications();
+    }
+
+    @And("click on received notification and verify it")
+    public void clickOnReceivedNotificationAndVerifyIt() {
+        preLogin
+                .receivedNotification();
+    }
+
+    @Then("go to inbox messages")
+    public void goToInboxMessages() {
+        preLogin
+                .inboxMessages();
+    }
+
+    @And("click on received message and verify it")
+    public void clickOnReceivedMessageAndVerifyIt() {
+        preLogin
+                .receivedMessage();
     }
 }

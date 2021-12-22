@@ -4,12 +4,14 @@ import appObjects.Translations;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.pagefactory.HowToUseLocators;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import testSetup.Base;
 
 import static appObjects.Translations.*;
+import static io.appium.java_client.pagefactory.LocatorGroupStrategy.ALL_POSSIBLE;
 import static org.testng.Assert.assertTrue;
 
 public class PaymentsPage extends Base {
@@ -42,8 +44,9 @@ public class PaymentsPage extends Base {
 
         return this;
     }
+
     @iOSXCUITFindBy(iOSNsPredicate = "name CONTAINS 'Current account'")
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Current account')]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Demand deposit')]")
     public WebElement payToField;
     public PaymentsPage payTo() {
         payToField.click();
@@ -51,8 +54,8 @@ public class PaymentsPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/inputAmount")
-    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='hr.asseco.android.ui.demo.de:id/inputAmount']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/inputAmount")
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='hr.asseco.android.ui.demo.de.core:id/inputAmount']")
     public WebElement amountField;
     public PaymentsPage enterAmount(String amount)  {
         scrollElementIntoView(amountField);
@@ -61,8 +64,8 @@ public class PaymentsPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/input")
-    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='hr.asseco.android.ui.demo.de:id/input']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/input")
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='hr.asseco.android.ui.demo.de.core:id/input']")
     public WebElement descriptionField;
     public PaymentsPage enterDescription(String desc)  {
         scrollElementIntoView(descriptionField);
@@ -71,8 +74,8 @@ public class PaymentsPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/button")
-    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='hr.asseco.android.ui.demo.de:id/button']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/button")
+    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='hr.asseco.android.ui.demo.de.core:id/button']")
     public WebElement continueBtn;
     public PaymentsPage clickContinue() {
         continueBtn.click();
@@ -116,8 +119,8 @@ public class PaymentsPage extends Base {
     }
 
 
-    @iOSXCUITFindBy(accessibility = "payment/identifier/type")
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc= 'payment/identifier/type']")
+    @iOSXCUITFindBy(accessibility = "Select payment type")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Select payment type')]")
     public WebElement paymentTypeBtn;
     @iOSXCUITFindBy(accessibility = ""+s_payments__title_pay_someone_select_payment_type+"")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text= '"+s_payments__title_pay_someone_select_payment_type+"']")
@@ -204,7 +207,7 @@ public class PaymentsPage extends Base {
         return this;
     }
     @iOSXCUITFindBy(accessibility = "Description*")
-    @AndroidFindBy(xpath = "//android.widget.Switch[@resource-id= 'hr.asseco.android.ui.demo.de:id/switchView']")
+    @AndroidFindBy(xpath = "//android.widget.Switch[@resource-id= 'hr.asseco.android.ui.demo.de.core:id/switchView']")
     public WebElement urgentPaymentSwitch;
     public PaymentsPage selectUrgentPayment(String turn) {
         scrollElementIntoView(urgentPaymentSwitch);
@@ -272,16 +275,16 @@ public class PaymentsPage extends Base {
 
 
     @iOSXCUITFindBy(accessibility = "Cancelled Orders")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Cancelled Orders']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Canceled Orders']")
     public WebElement canceledOrdersTitle;
-    @iOSXCUITFindBy(accessibility = "CANCELLED")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='CANCELLED']")
+    @iOSXCUITFindBy(accessibility = "CANCELED")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='CANCELED']")
     public WebElement canceledOrdersBtn;
     public PaymentsPage goToCanceledOrders() {
         wait(canceledOrdersBtn);
         canceledOrdersBtn.click();
         sleep();
-        verifyElementText(canceledOrdersTitle, "Cancelled Orders");
+        verifyElementText(canceledOrdersTitle, "Canceled Orders");
         return this;
     }
 
@@ -391,8 +394,8 @@ public class PaymentsPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/arrow")
-    @AndroidFindBy(xpath = "//android.widget.ImageView[@resource-id='hr.asseco.android.ui.demo.de:id/arrow']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/arrow")
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@resource-id='hr.asseco.android.ui.demo.de.core:id/arrow']")
     public WebElement providerBtn;
     @iOSXCUITFindBy(accessibility = ""+s_recharge__provider_dialog_title+"")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_recharge__provider_dialog_title+"']")
@@ -416,5 +419,55 @@ public class PaymentsPage extends Base {
         typeInProperty(phoneNumberBtn, phoneNum);
         return this;
 
+    }
+
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/search_src_text")
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id= 'hr.asseco.android.ui.demo.de.core:id/search_src_text']")
+    public WebElement searchBar;
+    public PaymentsPage searchOrder(String order) {
+       sleep();
+       sleep();
+        wait(searchBar);
+        typeInProperty(searchBar, order);
+
+        return this;
+    }
+
+    @iOSXCUITFindBy(accessibility = ""+s_payments__title_request_or_share_request_money+"")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_payments__title_request_or_share_request_money+"']")
+    public WebElement requestMoneyTitle;
+    @iOSXCUITFindBy(iOSNsPredicate = "name CONTAINS '"+s_payments__btn_menu_request_money+"'")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'"+s_payments__btn_menu_request_money+"')]")
+    public WebElement requestMoneyBtn;
+    public PaymentsPage gotoRequestMoney() {
+        wait(requestMoneyBtn);
+        requestMoneyBtn.click();
+        sleep();
+        verifyPage(requestMoneyTitle, s_payments__title_request_or_share_request_money);
+        return this;
+    }
+
+
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/switchView")
+    @AndroidFindBy(xpath = "//android.widget.Switch[@resource-id= 'hr.asseco.android.ui.demo.de.core:id/switchView']")
+    public WebElement paymentDetailsSwitch;
+    public PaymentsPage paymentDetailsSwitch(String turn) {
+        agreementSwitcher(paymentDetailsSwitch, turn);
+        return this;
+    }
+
+
+    @iOSXCUITFindBy(accessibility = ""+s_payments__title_request_or_share_money_share_code+"")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text= '"+s_payments__title_request_or_share_money_share_code+"']")
+    public WebElement showCodeTitle;
+    @iOSXCUITFindBy(accessibility = "SHOW CODE")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text= 'SHOW CODE']")
+    public WebElement showCodeBtn;
+    public PaymentsPage showCode() {
+
+        showCodeBtn.click();
+        sleep();
+        verifyPage(showCodeTitle, s_payments__title_request_or_share_money_share_code);
+        return this;
     }
 }

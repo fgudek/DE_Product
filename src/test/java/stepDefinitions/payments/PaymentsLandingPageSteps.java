@@ -113,4 +113,36 @@ public class PaymentsLandingPageSteps extends Base {
         cards
                 .swipeTo(svajp);
     }
+
+    @Then("go to Request money")
+    public void goToRequestMoney() {
+        payment
+                .gotoRequestMoney();
+    }
+
+    @Then("click add payment details")
+    public void clickAddPaymentDetails() {
+        payment
+                .paymentDetailsSwitch("on");
+    }
+
+    @Then("click Show Code")
+    public void clickShowCode() {
+        payment
+                .showCode();
+    }
+
+    @And("verify payment details")
+    public void verifyPaymentDetails() {
+        review
+                .verifyAmount("amount")
+                .verifyDescription("description");
+
+    }
+
+    @Then("click share")
+    public void clickShare() {
+        payment
+                .clickContinue();
+    }
 }

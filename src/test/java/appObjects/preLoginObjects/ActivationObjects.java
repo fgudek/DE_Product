@@ -28,8 +28,8 @@ public class ActivationObjects extends Base {
     }
 
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/m_banking_button")
-    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='hr.asseco.android.ui.demo.de:id/m_banking_button']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/m_banking_button")
+    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='hr.asseco.android.ui.demo.de.core:id/m_banking_button']")
     public WebElement registerBtn;
     public ActivationObjects clickRegister(){
         wait(registerBtn);
@@ -48,9 +48,10 @@ public class ActivationObjects extends Base {
         sleep();
         return this;
     }
-    //@HowToUseLocators(androidAutomation = ALL_POSSIBLE, iOSXCUITAutomation = ALL_POSSIBLE)
+    @HowToUseLocators(androidAutomation = ALL_POSSIBLE, iOSXCUITAutomation = ALL_POSSIBLE)
     @iOSXCUITFindBy(accessibility = "Navigate up")
     @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']")
+    @AndroidFindBy(xpath = "(//android.widget.ImageButton[@content-desc='Navigate up'])[2]")
     public WebElement backBtn;
     public ActivationObjects goBack() {
         wait(backBtn);
@@ -59,8 +60,8 @@ public class ActivationObjects extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/identificationCode")
-    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='hr.asseco.android.ui.demo.de:id/identificationCode']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/identificationCode")
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='hr.asseco.android.ui.demo.de.core:id/identificationCode']")
     public WebElement userField;
     public ActivationObjects enterUserID(){
         String userID = DataSource.getUserID();
@@ -76,8 +77,8 @@ public class ActivationObjects extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/keyInput")
-    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='hr.asseco.android.ui.demo.de:id/nextButton']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/keyInput")
+    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='hr.asseco.android.ui.demo.de.core:id/nextButton']")
     public WebElement nextBtn;
     public ActivationObjects clickNext() {
         wait(nextBtn);
@@ -86,8 +87,8 @@ public class ActivationObjects extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/keyInput")
-    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='hr.asseco.android.ui.demo.de:id/keyInput']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/keyInput")
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='hr.asseco.android.ui.demo.de.core:id/keyInput']")
     public WebElement smsCode;
     public ActivationObjects enterSMScode() {
         wait(smsCode);
@@ -98,8 +99,8 @@ public class ActivationObjects extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/button_ok")
-    @AndroidFindBy(xpath = "//android.widget.ImageButton[@resource-id='hr.asseco.android.ui.demo.de:id/button_ok']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/button_ok")
+    @AndroidFindBy(xpath = "//android.widget.ImageButton[@resource-id='hr.asseco.android.ui.demo.de.core:id/button_ok']")
     public WebElement OKbtn;
     @iOSXCUITFindBy(accessibility = "1")
     @AndroidFindBy(xpath = "//android.widget.Button[@text='1']")
@@ -124,8 +125,8 @@ public class ActivationObjects extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/start_button")
-    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='hr.asseco.android.ui.demo.de:id/start_button']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/start_button")
+    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='hr.asseco.android.ui.demo.de.core:id/start_button']")
     public WebElement startMbanking;
     public ActivationObjects startMbanking() {
         wait(startMbanking);
@@ -135,10 +136,10 @@ public class ActivationObjects extends Base {
     }
 
     @HowToUseLocators (androidAutomation = ALL_POSSIBLE, iOSXCUITAutomation = ALL_POSSIBLE)
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/switchView")
-    @AndroidFindBy(xpath = "//android.widget.Switch[@resource-id='hr.asseco.android.ui.demo.de:id/switchView']")
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/biometric_switch")
-    @AndroidFindBy(xpath = "//android.widget.Switch[@resource-id='hr.asseco.android.ui.demo.de:id/biometric_switch']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/switchView")
+    @AndroidFindBy(xpath = "//android.widget.Switch[@resource-id='hr.asseco.android.ui.demo.de.core:id/switchView']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/biometric_switch")
+    @AndroidFindBy(xpath = "//android.widget.Switch[@resource-id='hr.asseco.android.ui.demo.de.core:id/biometric_switch']")
     public WebElement biometricsSlider;
     public ActivationObjects disableBiometrics() {
         wait(biometricsSlider);

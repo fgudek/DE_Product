@@ -10,6 +10,7 @@ import appObjects.preLoginObjects.LoginPage;
 import appObjects.preLoginObjects.PreLoginPage;
 import appObjects.accountsPage.transactions.SearchObjects;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import testSetup.Base;
 
@@ -79,4 +80,45 @@ public class MoreSteps extends Base {
                 .showBalanceOnPrelogin("off");
     }
 
+    @Then("click Documents")
+    public void clickDocuments() {
+        more
+                .documents();
+    }
+
+    @Then("go to documents settings")
+    public void goToDocumentsSettings() {
+        more
+                .documentSettings();
+    }
+
+    @Then("click on account selection")
+    public void clickOnAccountSelection() {
+        more
+                .accountSelection();
+    }
+
+    @Then("click on delivery method")
+    public void clickOnDeliveryMethod() {
+        more
+                .deliveryMethod();
+    }
+
+    @Then("select (.*?) for delivery method$")
+    public void selectForDeliveryMethod(String delivery) {
+        more
+                .selectDeliveryMethod(delivery);
+    }
+
+    @Then("change delivery frequency and return it to default")
+    public void changeDeliveryFrequencyAndReturnItToDefault() {
+        more
+                .changeDeliveryFrequency();
+    }
+
+    @And("verify success message and click OK")
+    public void verifySuccessMessageAndClickOK() {
+        more
+                .verifySuccessDocChange();
+    }
 }

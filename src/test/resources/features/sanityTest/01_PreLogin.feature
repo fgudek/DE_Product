@@ -36,7 +36,7 @@ Feature: PRE LOGIN PAGE TEST
 
 
   @Login
-  Scenario: LOGIN TESTS
+  Scenario: LOGIN TEST
     Then click LOG IN
     Then click USE PIN
     Then enter PIN
@@ -75,7 +75,6 @@ Feature: PRE LOGIN PAGE TEST
     Then click More
     Then click Contacts
     Then find Branches and ATMs
-
     Then click on mToken
     Then generate OTP
     Then go BACK
@@ -108,6 +107,19 @@ Feature: PRE LOGIN PAGE TEST
     Scenario: MCASH ON PRELOGIN
       Then click mCash
       Then enter PIN
+
+    @Inbox
+      Scenario: Inbox
+      Given activated app is open
+      Then click on INBOX
+      Then enter PIN
+      Then verify Inbox
+      Then go to inbox notifications
+      And click on received notification and verify it
+      Then go BACK
+      Then go to inbox messages
+      And click on received message and verify it
+      Then go BACK
 
 
 

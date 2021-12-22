@@ -63,14 +63,20 @@ Feature: PAYMENTS PAGE TEST
     Then go to CANCELED orders
     Then go to Select bank account
     Then select currentRSDaccountLong Account
+    Then verify order
     Then go to Select bank account
     Then select CURRENT_ACCOUNT Account
     Then go BACK
     And go to My Orders
     Then go to EXECUTED orders
+    Then search for order
+    Then verify executed order
     Then go BACK
     And go to My Orders
     Then go to PENDING orders
+    Then go to Select bank account
+    Then select currentRSDaccountLong Account
+    Then verify order
     Then go BACK
     And go to My Orders
     Then go to REJECTED orders
@@ -85,6 +91,19 @@ Feature: PAYMENTS PAGE TEST
     Then go to Scan to pay
     Then verify Scan To Pay page
     Then go BACK
+
+  @RequestMoney
+    Scenario: Request Money
+    Then go to Request money
+    Then click on account selection
+    Then select GIRO-ACCOUNT Account
+    Then click add payment details
+    Then enter Amount
+    Then enter Description
+    Then click Show Code
+    And verify payment details
+    Then click share
+
 
   @RechargePhone
   Scenario: RECHARGE PHONE

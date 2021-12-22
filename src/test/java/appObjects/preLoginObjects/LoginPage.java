@@ -39,8 +39,8 @@ public class LoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/button_ok")
-    @AndroidFindBy(xpath = "//android.widget.ImageButton[@resource-id='hr.asseco.android.ui.demo.de:id/button_ok']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/button_ok")
+    @AndroidFindBy(xpath = "//android.widget.ImageButton[@resource-id='hr.asseco.android.ui.demo.de.core:id/button_ok']")
     public WebElement OKbtn;
     @iOSXCUITFindBy(accessibility = "1")
     @AndroidFindBy(xpath = "//android.widget.Button[@text='1']")
@@ -80,8 +80,8 @@ public class LoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/label")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de:id/label']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/label")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de.core:id/label']")
     public WebElement accountsTitle;
     public LoginPage verifyLogIn(){
         wait(accountsTitle);

@@ -22,8 +22,8 @@ public class NavigationBar extends Base {
     }
 
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de:id/button")
-    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='hr.asseco.android.ui.demo.de:id/button']")
+    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/button")
+    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='hr.asseco.android.ui.demo.de.core.core:id/button']")
     public WebElement genericBtn;
     public NavigationBar clickButton() {
         genericBtn.click();
