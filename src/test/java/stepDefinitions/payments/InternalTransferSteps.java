@@ -44,11 +44,18 @@ public class InternalTransferSteps extends Base {
                 .payTo();
     }
 
-    @Then("enter Amount")
-    public void enterAmount() {
+    @Then("^enter (.*) as amount$")
+    public void enterAmount(String amount) {
         payment
-                .enterAmount("amount");
+                .enterAmount(amount);
     }
+
+    @Then("^enter (.*) as payment AMOUNT$")
+    public void enterPaymentAmount(String amount) {
+        payment
+                .enterPaymentAmount(amount);
+    }
+
 
     @Then("enter Description")
     public void enterDescription() {
@@ -80,14 +87,80 @@ public class InternalTransferSteps extends Base {
                 .clickContinue();
     }
 
+    @Then("verify REVIEW page")
+    public void verifyReview() {
+        review
+                .verifyReview();
+    }
+
+    @Then("review (.*) as PAYER$")
+    public void reviewPayerAcc(String Pacc) {
+        review
+                .verifyFROMAccount(Pacc);
+    }
+
+    @Then("review (.*) as BENEFICIARY$")
+    public void reviewBeneficiaryAcc(String Bacc) {
+        review
+                .verifyTOAccount(Bacc);
+    }
+
+    @Then("review (.*) as AMOUNT$")
+    public void reviewAmountReview(String amount) {
+        review
+                .verifyAmountReview(amount);
+    }
+
+    @Then("review (.*) as BENEFICIARY NAME$")
+    public void reviewBeneficiaryName(String name) {
+        review
+                .verifyBeneficiaryName(name);
+    }
+
+    @Then("verify Payment review")
+    public void verifyPaymentReview() {
+        review
+                .verifyReview()
+     //           .verifyAmount("amount")
+                .verifyFROMAccount("RSDaccount")
+                .verifyTOAccount("EUR_ACCOUNT")
+                .verifyAmount("AMOUNT");
+    }
+
     @Then("verify Internal Payment review")
     public void verifyInternalPaymentReview() {
         review
                 .verifyReview()
-     //           .verifyAmount("amount")
+                //           .verifyAmount("amount")
+                .verifyFROMAccount("currentRSDaccount")
+                .verifyTOAccount("currentHRKaccount")
+                .verifyAmount("AMOUNT");
+    }
+
+    @Then("verify P2P Payment review")
+    public void verifyP2PPaymentReview() {
+        review
+                .verifyReview()
+                //           .verifyAmount("amount")
+                .verifyFROMAccount("currentRSDaccount")
+                .verifyTOAccount("CONTACT_PHONE_REVIEW")
+                .verifyAmount("AMOUNT");
+    }
+
+
+
+    @Then("click save TEMPLATE")
+    public void saveTemp() {
+        payment
+                .saveTemp();
+    }
+
+   /* @Then("verify SAVINGS internal transfer review")
+    public void verifySavingsReview() {
+        review
                 .verifyFROMAccount("currentRSDaccount")
                 .verifyTOAccount("currentHRKaccount");
-    }
+    } */
 
     @Then("sign the transfer and confirm it successful")
     public void signtheTransferAndConfirmItSuccessful() {
@@ -98,4 +171,5 @@ public class InternalTransferSteps extends Base {
         review
                 .verifySuccessfulInternalTransfer();
     }
+
 }

@@ -26,12 +26,12 @@ public class LoginPage extends Base {
 
     @iOSXCUITFindBy(accessibility = ""+s_common__biometric_auth_messsage+"")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_common__biometric_auth_messsage+"']")
-    public WebElement boimetricLoginTitle;
+    public WebElement biometricLoginTitle;
     @iOSXCUITFindBy(accessibility = "com.android.systemui:id/button2")
     @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='com.android.systemui:id/button2']")
     public WebElement usePinBtn;
     public LoginPage clickUsePIN(){
-        if(isElementPresent(boimetricLoginTitle)){
+        if(isElementPresent(biometricLoginTitle)){
             wait(usePinBtn);
             usePinBtn.click();
         }
@@ -39,20 +39,20 @@ public class LoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/button_ok")
+    @iOSXCUITFindBy(accessibility = "ic pin ok enabled")
     @AndroidFindBy(xpath = "//android.widget.ImageButton[@resource-id='hr.asseco.android.ui.demo.de.core:id/button_ok']")
     public WebElement OKbtn;
-    @iOSXCUITFindBy(accessibility = "1")
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='1']")
-    public WebElement pinDigit1;
-    @iOSXCUITFindBy(accessibility = "1")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='3']")
     @AndroidFindBy(xpath = "//android.widget.Button[@text='3']")
+    public WebElement pinDigit1;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='9']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='9']")
     public WebElement pinDigit2;
-    @iOSXCUITFindBy(accessibility = "1")
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='6']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='1']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='1']")
     public WebElement pinDigit3;
-    @iOSXCUITFindBy(accessibility = "1")
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='8']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='0']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='0']")
     public WebElement pinDigit4;
     public LoginPage enterPIN() {
         clickUsePIN();
@@ -80,13 +80,12 @@ public class LoginPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "hr.asseco.android.ui.demo.de.core:id/label")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='hr.asseco.android.ui.demo.de.core:id/label']")
+    @iOSXCUITFindBy(accessibility = "" + s_dashboard__title_BANK_ACCOUNT + "")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_dashboard__title_BANK_ACCOUNT+"']")
     public WebElement accountsTitle;
     public LoginPage verifyLogIn(){
-        wait(accountsTitle);
+       // wait(accountsTitle);
         accountsTitle.isDisplayed();
-
         sleep();
         return this;
     }

@@ -3,6 +3,7 @@ package stepDefinitions.payments;
 import appObjects.NavigationBar;
 import appObjects.paymentPage.PaymentsPage;
 import appObjects.paymentPage.ReviewPage;
+import appObjects.preLoginObjects.PreLoginPage;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -26,6 +27,7 @@ public class MyOrdersSteps extends Base {
         payment = new PaymentsPage(d);
         review = new ReviewPage(d);
         navigate = new NavigationBar(d);
+        preLogin = new PreLoginPage(d);
     }
 
     @Then("go to CANCELED orders")
@@ -59,15 +61,28 @@ public class MyOrdersSteps extends Base {
                 .goToScheduledOrders();
     }
 
+    @Then("go to UNKNOWN orders")
+    public void goToUNKNOWNOrders() {
+        payment
+                .goToUnknownOrders();
+    }
+
     @Then("go to Select bank account")
     public void goToSelectBankAccount() {
         payment
                 .selectBankAccount();
     }
 
-    @Then("^select (.*?) Account$")
+    @Then("go to Select bank account - ORDERS")
+    public void selectBankAccountInOrders() {
+        payment
+                .selectBankAccountInOrders();
+    }
+
+    @Then("select (.*?) as Account$")
     public void selectAccount(String acc) {
         payment
+                .scrollToEurAccount()
                 .selectAccount(acc);
     }
 
@@ -84,9 +99,16 @@ public class MyOrdersSteps extends Base {
                 .searchOrder("executedOrder");
     }
 
+    @Then("erase search")
+    public void eraseSearch() {
+        payment
+                .eraseSearch();
+    }
+
     @Then("verify executed order")
     public void verifyExecutedOrder() {
         review
                 .verifyExecutedOrder();
     }
+
 }

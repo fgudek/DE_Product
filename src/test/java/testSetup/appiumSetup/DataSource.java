@@ -54,6 +54,17 @@ public class DataSource extends Base {
         }
     }
 
+    public static String getUDID() {
+
+        String w = System.getProperty("UDID");
+
+        if (w == null) {
+            return config.getProperty("UDID");
+        } else {
+            return System.getProperty("UDID");
+        }
+    }
+
     public static String getSleep() {
         String to = System.getProperty("sleep");
 
@@ -77,17 +88,13 @@ public class DataSource extends Base {
     public static String getPlatform(){
 
         String pl = System.getProperty("platform");
-        String os = System.getProperty("os.name");
 
         if (pl== null){
-            if(os.contains("Windows")){
-                return "Android";
-            }
-            else{
-                return "iOS";
-            }
+            return config.getProperty("platform");
         }
-        else{return System.getProperty("platform");}
+        else{
+            return System.getProperty("platform");
+        }
     }
 
     public static String getOSVersion(){
@@ -260,8 +267,7 @@ public class DataSource extends Base {
         return config.getProperty("serviceId");
     }
 
-    public static String getSMAP(){
-        return config.getProperty("smap");
+    public static String getSMAP(){ return config.getProperty("smap");
     }
 
     public static void getLog(){

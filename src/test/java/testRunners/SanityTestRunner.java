@@ -26,7 +26,7 @@ import static testSetup.Base.service;
 @CucumberOptions(
         features="src/test/resources/features",
         glue={"stepDefinitions","testSetup"},
-        tags={"@SanityTest", "@ActivationAndLogin"},
+        tags={"@SanityTest or @ActivationAndLogin"},
         monochrome = true,
         strict = true,
         dryRun = false,
@@ -45,7 +45,7 @@ public class SanityTestRunner extends AbstractTestNGCucumberTests {
 
         CreateTranslations.main();
         ReloadClass.main();
-        DataSource.getAPK();
+        //DataSource.getAPK();
 
         boolean flag = checkIfServerIsRunning(4723);
 

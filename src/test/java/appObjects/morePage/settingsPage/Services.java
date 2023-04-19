@@ -5,12 +5,14 @@ import appObjects.morePage.MorePage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.pagefactory.HowToUseLocators;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import testSetup.Base;
 
 import static appObjects.Translations.*;
+import static io.appium.java_client.pagefactory.LocatorGroupStrategy.ALL_POSSIBLE;
 
 public class Services extends Base {
 
@@ -19,8 +21,10 @@ public class Services extends Base {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
+    @HowToUseLocators(androidAutomation = ALL_POSSIBLE, iOSXCUITAutomation = ALL_POSSIBLE)
     @iOSXCUITFindBy(accessibility = ""+s_settings_fast_balance__title_fast_balance+"")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_settings_fast_balance__title_fast_balance+"']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='-']")
     public WebElement mBalanceBtn;
     public Services mBalance() {
         scrollElementIntoView(mBalanceBtn);

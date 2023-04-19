@@ -40,8 +40,6 @@ public class PreLoginSteps extends Base {
     }
 
 
-
-
     @Then("^click on language select$")
     public void click_on_language_select(){
         preLogin
@@ -49,10 +47,16 @@ public class PreLoginSteps extends Base {
 
     }
 
-    @Given("activated app is open")
+    @Given("preActivated App is open")
     public void activatedAppIsOpen() {
         preLogin
                 .verifyActivatedLandingPage();
+    }
+
+    @Given("reg user landing page is open")
+    public void regUserLandingPageIsOpen() {
+        preLogin
+                .verifyRegUserLandingPage();
     }
 
     @Then("change to domestic language")
@@ -65,6 +69,12 @@ public class PreLoginSteps extends Base {
     public void verifyLanguageChange() {
         preLogin
                 .verifyLangChange();
+    }
+
+    @Then("verify EN language")
+    public void verifyEN() {
+        preLogin
+                .verifyEN();
     }
 
     @Then("change language back to EN")
@@ -90,6 +100,13 @@ public class PreLoginSteps extends Base {
         preLogin
                 .products();
     }
+
+    @Then("click Demo")
+    public void clickDemo() {
+        preLogin
+                .Demo();
+    }
+
 
     @Then("click Exchange List")
     public void clickExchangeList() {
@@ -141,6 +158,24 @@ public class PreLoginSteps extends Base {
                .logOut();
     }
 
+    @Given("verify PRELOGIN screen")
+    public void vreifyPreloginScrenn() {
+        preLogin
+                .verifyRegUserLandingPage();
+    }
+
+    @Then("click pullBarBtn")
+    public void pullBarBtn() {
+        security
+                .pullBarBtn();
+    }
+
+    @Then("close use Biometrics")
+    public void clicktocloseBiometrics() {
+        security
+                .clicktocloseBiometrics();
+    }
+
     @Given("user is logged in")
     public void userIsLoggedIn() {
         preLogin
@@ -154,36 +189,35 @@ public class PreLoginSteps extends Base {
 
     }
 
-    @Then("edit Exchange List")
+    @Then("edit Exchange List$")
     public void editExchangeList() {
-        navigate
-                .clickButton();
         preLogin
+                .clickEditCur()
                 .selectCurencies("CHF")
-                .selectCurencies("EUR");
-        navigate
-                .clickButton();
-
-        
+                .selectCurencies("EUR")
+                .selectCurencies("GBP")
+                .selectCurencies("USD")
+                .selectCurencies("GBP")
+                .selectCurencies("USD")
+                .clickDoneCur();
     }
 
-    @Then("verify Exchange list change")
+    @Then("verify Exchange list change$")
     public void verifyExchangeListChange() {
        review
-               .verifyCurrencyChange("CHF")
-               .verifyCurrencyChange("EUR");
+               .verifyCurrencyChange("EUR")
+               .verifyCurrencyChange("CHF");
         
     }
 
-    @Then("undo Exchange List change")
+    @Then("undo Exchange List change$")
     public void undoExchangeListChange() {
-        navigate
-                .clickButton();
+
         preLogin
+                .clickEditCur()
                 .selectCurencies("CHF")
-                .selectCurencies("EUR");
-        navigate
-                .clickButton();
+                .selectCurencies("EUR")
+                .clickDoneCur();
 
     }
 
@@ -206,6 +240,18 @@ public class PreLoginSteps extends Base {
                 .inputMDSdata();
     }
 
+    /*@Then("enter MDSAmount")
+    public void inputMDSamount() {
+        preLogin
+                .inputMDSamount();
+    }
+*/
+    @Then("click close")
+    public void CloseKeyBtn() {
+        preLogin
+                .CloseKeyBtn();
+    }
+
     @Then("generate MDS")
     public void generateMDS() {
         preLogin
@@ -218,6 +264,25 @@ public class PreLoginSteps extends Base {
                 .mBalance();
     }
 
+    @Then("select show balance switcher")
+    public void selectShowBalance() {
+        preLogin
+                .selectShowBalance("on");
+
+    }
+
+    @Then("deselect show balance switcher")
+    public void deselectShowBalance() {
+        preLogin
+                .selectShowBalance("off");
+
+    }
+
+    @Then("enter 300 amount")
+    public void inputCustomAmount() {
+        preLogin
+                .inputCustomAmount();
+    }
 
     @Then("verify prelogin mBalance")
     public void verifyPreloginMBalance() {
@@ -226,16 +291,58 @@ public class PreLoginSteps extends Base {
 
     }
 
-    @Then("click X")
-    public void clickX() {
+    @Then("click Save mCash")
+    public void clickSaveMCashBtn() {
         preLogin
-                .clickX();
+                .clickSaveMCashBtn();
     }
 
     @Then("click mCash")
     public void clickMCash() {
         preLogin
                 .mCash();
+    }
+
+    @Then("click visibility of amount")
+    public void clickVisiblityBtn() {
+        preLogin
+                .clickVisiblityBtn();
+    }
+
+    @Then("close visibility screen")
+    public void closeVisiblity() {
+        preLogin
+                .closeVisiblity();
+    }
+
+    @Then("select custom to withdrawal")
+    public void clickCustomAmountBtn() {
+        preLogin
+                .clickCustomAmountBtn();
+    }
+
+    @Then("swipe and click on Marketing-03")
+    public void clickMarketingN03() {
+        preLogin
+                .clickMarketingN03();
+    }
+
+    @Then("swipe and click on Marketing-01")
+    public void clickMarketingN01() {
+        preLogin
+                .clickMarketingN01();
+    }
+
+    @Then("verify mCash screen")
+    public void verifymCashScreen() {
+        preLogin
+                .verifymCashScreen();
+    }
+
+    @Then("verify Marketing-03 screen")
+    public void verifyMarketingN03Title() {
+        preLogin
+                .verifyMarketingN03Title();
     }
 
 
@@ -249,6 +356,24 @@ public class PreLoginSteps extends Base {
     public void goToInboxNotifications() {
         preLogin
                 .inboxNotifications();
+    }
+
+    @Then("archive message")
+    public void ArchiveInboxMsg() {
+        preLogin
+                .ArchiveInboxMsg();
+    }
+
+    @Then("select Archive")
+    public void clickArchiveMenuBtn() {
+        preLogin
+                .clickArchiveMenuBtn();
+    }
+
+    @Then("click menu Inbox")
+    public void clickMenuInbox() {
+        preLogin
+                .clickMenuInbox();
     }
 
     @And("click on received notification and verify it")
@@ -268,4 +393,42 @@ public class PreLoginSteps extends Base {
         preLogin
                 .receivedMessage();
     }
+
+    @Then("select 20 to withdraw")
+    public void select20HRK() {
+        preLogin
+                .select20HRK();
+    }
+
+    @Then("click Generate code")
+    public void clickGenerateCodeBtn() {
+        preLogin
+                .clickGenerateCodeBtn();
+    }
+
+    @Then("verify mCash code screen")
+    public void verifymCashCodeTitle() {
+        preLogin
+                .verifymCashCodeTitle();
+    }
+
+    @Then("click share code")
+    public void ShareCodeMCash() {
+        preLogin
+                .ShareCodeMCash();
+    }
+
+    @Then("click Invalidate code")
+    public void clickInvalidateCodeBtn() {
+        preLogin
+                .clickInvalidateCodeBtn();
+    }
+
+    @Then("click Invalidate")
+    public void clickInvalidateBtn() {
+        preLogin
+                .clickInvalidateBtn();
+    }
+
+
 }

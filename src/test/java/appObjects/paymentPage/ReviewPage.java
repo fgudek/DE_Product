@@ -27,7 +27,6 @@ public class ReviewPage extends Base {
     @iOSXCUITFindBy(accessibility = "" + s_payments__title_payment_review + "")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='" + s_payments__title_payment_review + "']")
     public WebElement reviewDataTitle;
-
     public ReviewPage verifyReview() {
         verifyPage(reviewDataTitle, s_payments__title_payment_review);
         return this;
@@ -62,6 +61,59 @@ public class ReviewPage extends Base {
         }
 
         String str = toAccountNumber.getText();
+        String accountNumber = prop.getProperty(property);
+        String errorMessage = "Found " + str + " but expected " + accountNumber;
+        assertTrue(str.contains(accountNumber), errorMessage);
+        return this;
+    }
+
+    @iOSXCUITFindBy(iOSNsPredicate = "name CONTAINS '"+s_payments__lbl_payment_details+"'")
+    @AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text,'"+s_payments__lbl_payment_details+"')]")
+    public WebElement amountData;
+    public ReviewPage verifyAmountReview(String amount) {
+        scrollToElement("down",amountData);
+        verifier(amountData, amount);
+        return this;
+    }
+
+    @iOSXCUITFindBy(iOSNsPredicate = "name CONTAINS '"+s_payments__lbl_pay_to+"'")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'BENEFICIARY NAME')]")
+    public WebElement beneficiaryNameData;
+    public ReviewPage verifyBeneficiaryName(String beneficiaryName) {
+        scrollToElement("down",beneficiaryNameData);
+        verifier(beneficiaryNameData, beneficiaryName);
+        return this;
+    }
+
+    @iOSXCUITFindBy(iOSNsPredicate = "name CONTAINS 'Pay from'")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, '"+ s_payments__lbl_pay_from +"')]")
+    public WebElement fromAccountNumberSavings;
+    public ReviewPage verifyFROMAccountSavings(String property) {
+        try {
+            prop.load(new FileInputStream(testData));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String str = fromAccountNumberSavings.getText();
+        // System.out.println("test za output sadrzaj:");
+        // System.out.println(str);
+        String accountNumber = prop.getProperty(property);
+        String errorMessage = "Found " + str + " but expected " + accountNumber;
+        assertTrue(str.contains(accountNumber), errorMessage);
+        return this;
+    }
+
+    @iOSXCUITFindBy(iOSNsPredicate = "name CONTAINS 'Pay to'")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'"+s_payments__lbl_pay_to+"')]")
+    public WebElement toAccountNumberSavings;
+    public ReviewPage verifyTOAccountSavings(String property) {
+        try {
+            prop.load(new FileInputStream(testData));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String str = toAccountNumberSavings.getText();
         String accountNumber = prop.getProperty(property);
         String errorMessage = "Found " + str + " but expected " + accountNumber;
         assertTrue(str.contains(accountNumber), errorMessage);
@@ -113,12 +165,11 @@ public class ReviewPage extends Base {
         return this;
     }
 
-
     public ReviewPage verifyCurrencyChange(String currency) {
-        String acc = prop.getProperty(currency);
-        isTextNOTPresent(acc);
+        isTextNOTPresent(currency);
         return this;
     }
+
     @iOSXCUITFindBy(accessibility = ""+s_payments__title_pay_someone_domestic+"")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_payments__title_pay_someone_domestic+"']")
     public WebElement DomesticPaymentTitle;
@@ -145,7 +196,7 @@ public class ReviewPage extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(iOSNsPredicate = "name CONTAINS 'eee'")
+    @iOSXCUITFindBy(iOSNsPredicate = "name CONTAINS 'Zare'")
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'eee')]")
     public WebElement executedOrder;
     public ReviewPage verifyExecutedOrder() {
@@ -157,9 +208,10 @@ public class ReviewPage extends Base {
     }
 
 
-    @iOSXCUITFindBy(iOSNsPredicate = "name CONTAINS 'Amount'")
+
+    @iOSXCUITFindBy(iOSNsPredicate = "name CONTAINS 'Payment details'")
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Amount')]")
-    public WebElement amount;
+    public WebElement Details;
     public ReviewPage verifyAmount(String property) {
     /*    try {
             prop.load(new FileInputStream(testData));
@@ -167,11 +219,10 @@ public class ReviewPage extends Base {
             e.printStackTrace();
         }
     */
-
-        String str = amount.getText();
+        String string = Details.getText();
         String pare = prop.getProperty(property);
-        String errorMessage = "Found " + str + " but expected " + pare;
-        assertTrue(str.contains(pare), errorMessage);
+        String errorMessage = "Found " + string + " but expected " + pare;
+        assertTrue(string.contains(pare), errorMessage);
         return this;
     }
 
@@ -190,6 +241,59 @@ public class ReviewPage extends Base {
         String opis = prop.getProperty(property);
         String errorMessage = "Found " + str + " but expected " + opis;
         assertTrue(str.contains(opis), errorMessage);
+        return this;
+    }
+
+    @iOSXCUITFindBy(iOSNsPredicate = "name CONTAINS 'Bill issuer details'")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, '"+ s_payments__lbl_pay_from +"')]")
+    public WebElement reviewBillIssuerName;
+    public ReviewPage verifyBillIssuerName(String property) {
+        try {
+            prop.load(new FileInputStream(testData));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String str = reviewBillIssuerName.getText();
+        // System.out.println("test za output sadrzaj:");
+        // System.out.println(str);
+        String BillIssuer = prop.getProperty(property);
+        String errorMessage = "Found " + str + " but expected " + BillIssuer;
+        assertTrue(str.contains(BillIssuer), errorMessage);
+        return this;
+    }
+
+    @iOSXCUITFindBy(iOSNsPredicate = "name CONTAINS 'Bill details'")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, '"+ s_payments__lbl_pay_from +"')]")
+    public WebElement reviewBillIdentifier;
+    public ReviewPage verifyBillIdentifier(String property) {
+        try {
+            prop.load(new FileInputStream(testData));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String str = reviewBillIdentifier.getText();
+        // System.out.println("test za output sadrzaj:");
+        // System.out.println(str);
+        String BillIdentifier = prop.getProperty(property);
+        String errorMessage = "Found " + str + " but expected " + BillIdentifier;
+        assertTrue(str.contains(BillIdentifier), errorMessage);
+        return this;
+    }
+
+    @iOSXCUITFindBy(iOSNsPredicate = "name CONTAINS 'Standing order details'")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Amount')]")
+    public WebElement SODetailsreview;
+    public ReviewPage verifyNicknameSO(String property) {
+    /*    try {
+            prop.load(new FileInputStream(testData));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    */
+        String str = SODetailsreview.getText();
+        String nick = prop.getProperty(property);
+        String errorMessage = "Found " + str + " but expected " + nick;
+        assertTrue(str.contains(nick), errorMessage);
         return this;
     }
 }

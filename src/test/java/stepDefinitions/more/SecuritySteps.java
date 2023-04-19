@@ -88,6 +88,43 @@ public class SecuritySteps extends Base {
                 .fastPayments();
     }
 
+    @Then("ENABLE FAST PAYMENT")
+    public void EnableFastPayment() {
+        security
+                .EnableFastPayment();
+    }
+
+    @Then("DISABLE FAST PAYMENT")
+    public void DisableFastPayment() {
+        security
+                .DisableFastPayment();
+    }
+
+    @Then("verify FAST PAYMENT settings change")
+    public void verifyFPsettingschange() {
+        security
+                .verifyFPsettingschange();
+    }
+
+    @Then("enable Biometrics Btn")
+    public void enableBiometricsBtn() {
+        security
+                .enableBiometricsBtn();
+    }
+
+    @Then("disable Biometrics Btn")
+    public void disableBiometricsBtn() {
+        security
+                .disableBiometricsBtn();
+    }
+
+    @Then("verify biometrics change notification")
+    public void biometricsChangeNoti() {
+        security
+                .biometricsChangeNoti();
+    }
+
+
     @Then("turn (.*?) Fast payments$")
     public void turnFastPayments(String turn) {
         security
@@ -122,7 +159,7 @@ public class SecuritySteps extends Base {
     @Then("change total number of transactions per MONTH")
     public void changeTotalNumberOfTransactionsPerMONTH() {
         security
-                .limitsPerMonthTotal("TotalNumOfTransPerMonthNew");
+                .numberofTransPermonth("TotalNumOfTransPerMonthNew");
     }
 
     @Then("change total number of transactions per DAY")
@@ -138,8 +175,169 @@ public class SecuritySteps extends Base {
                 .limitsPerDay("LimitPerDayDefault")
                 .numberofTransPerday("TotalNumOfTransPerDayDefault")
                 .limitsPerMonth("LimitsPerMonthDefault")
-                .limitsPerMonthTotal("TotalNumOfTransPerMonthDefault");
+                .numberofTransPermonth("TotalNumOfTransPerMonthDefault");
     }
 
+    @Then("go to mBanking Recovery code")
+    public void clickmBankingRecovery() {
+        security
+                .clickmBankingRecovery();
+    }
+
+    @Then("verify mBanking Recovery code screen")
+    public void verifyMbankingRecoveryCodeScreen() {
+        security
+                .verifyMbankingRecoveryCodeScreen();
+    }
+
+    @Then("click RESET CODE")
+    public void clickmResetCodeBtn() {
+        security
+                .clickmResetCodeBtn();
+    }
+
+    @Then("enter NEW Recovery code")
+    public void enterNewRC() {
+        security
+                .enterNewRC();
+    }
+
+    @Then("confirm NEW Recovery code")
+    public void confirmNewRC() {
+        security
+                .enterNewRC();
+    }
+
+    @Then("enter DEFAULT Recovery code")
+    public void enterDefaultRC() {
+        security
+                .enterDefaultRC();
+    }
+
+    @Then("confirm DEFAULT Recovery code")
+    public void confirmDefaultRC() {
+        security
+                .enterDefaultRC();
+    }
+
+    @Then("verify successful RC change")
+    public void verifyRCsuccessMsg() {
+        security
+                .verifyRCsuccessMsg();
+    }
+
+    @Then("go to Select Default Balance")
+    public void clickSelectDefaultBalance() {
+        security
+                .clickSelectDefaultBalance();
+    }
+
+    @Then("select ACTUAL BALANCE")
+    public void selectActualBalance() {
+        security
+                .selectActualBalance();
+    }
+
+    @Then("select TOTAL AVAILABLE BALANCE")
+    public void selectTotalAvailableBalance() {
+        security
+                .selectTotalAvailableBalance();
+    }
+
+    @Then("close Select Default Balance modal")
+    public void closeSelectBalance() {
+        security
+                .closeSelectBalance();
+    }
+
+    @Then("go to Show or hide balance")
+    public void clickShowHideBalance() {
+        security
+                .clickShowHideBalance();
+    }
+
+    @Then("close Show or hide balance modal")
+    public void closeShowOrHideBalance() {
+        security
+                .closeBalanceOnHomeScreen();
+    }
+
+    @Then("click SHOW BALANCE")
+    public void clickShowBalance() {
+        security
+                .clickShowBalance();
+    }
+
+    @Then("click HIDE BALANCE")
+    public void clickHideBalance() {
+        security
+                .clickHideBalance();
+    }
+
+    @Then("go to About app")
+    public void clickAboutApp() {
+        security
+                .clickAboutApp();
+    }
+
+    @Then("verify About app screen")
+    public void verifyAboutApp() {
+        security
+                .verifyDeveloperLbl();
+    }
+
+    @Then("go to Terms and conditions")
+    public void clickTermsAndConditions() {
+        security
+                .clickTermsAndConditions();
+    }
+
+    @Then("verify Terms and conditions screen")
+    public void verifyTermsAndConditions() {
+        security
+                .verifyTermsAndConditions();
+    }
+
+    @Then("go to Privacy policy")
+    public void clickPrivacyPolicy() {
+        security
+                .clickPrivacyPolicy();
+    }
+
+    @Then("verify Privacy policy screen")
+    public void verifyPrivacyPolicy() {
+        security
+                .verifyPrivacyPolicy();
+    }
+
+    @Then("go to About device")
+    public void clickAboutDevice() {
+        security
+                .clickAboutDevice();
+    }
+
+    @Then("verify About device screen")
+    public void verifyAboutDevice() {
+        security
+                .verifyAboutDevice();
+    }
+
+    @Then("click DEACTIVATE APP")
+    public void clickDeactivate() {
+        security
+                .clickDeactivate();
+    }
+
+    @Then("go to Deactivate app")
+    public void clickDeactivateApp() {
+        security
+                .clickDeactivateApp();
+    }
+
+    @Then("verify Deactivation message")
+    public void verifyDeactivateApp() {
+        security
+                .verifyDeactivateApp();
+    }
 
 }

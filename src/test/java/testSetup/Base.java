@@ -1,6 +1,6 @@
 package testSetup;
 
-import appObjects.HomePage;
+//import appObjects.HomePage;
 import appObjects.NavigationBar;
 import appObjects.morePage.OurProducts;
 import appObjects.accountsPage.*;
@@ -32,6 +32,7 @@ import io.cucumber.java.Scenario;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -115,7 +116,7 @@ public class Base {
     protected OurProducts products;
     protected mToken mtoken;
     protected AppAndPolicies appAndPolicies;
-    protected HomePage home;
+    //protected HomePage home;
 
     public static String activationCode;
 
@@ -193,6 +194,12 @@ public class Base {
 
     }
 
+    public void clickHold(WebElement element){
+        TouchActions action = new TouchActions(d);
+        action.longPress(element);
+        action.perform();
+    }
+
     public void switcher(WebElement element,String turn){
         switch(turn) {
             case "on" :
@@ -212,7 +219,7 @@ public class Base {
         sleep();
     }
 
-    public void agreementSwitcher(WebElement element,String turn){
+   /* public void agreementSwitcher(WebElement element,String turn){
         switch(turn) {
             case "on" :
                 if (element.getAttribute("checked").equals("false")) {
@@ -228,9 +235,49 @@ public class Base {
                 break;
         }
         sleep();
+    } */
+
+    public void agreementSwitcher(WebElement element,String turn){
+        switch(turn.toUpperCase()) {
+            case "ON" :
+                if(DataSource.getPlatform().equals("Android")) {
+                    if (element.getAttribute("checked").equals("false")) {
+                        element.click();
+                    }
+                }else if(DataSource.getPlatform().equals("iOS")){
+                    if(element.getAttribute("value").equals("0")) {
+                        element.click();
+                    }
+                }else if(DataSource.getPlatform().equals("iOS")){
+                    if(element.getAttribute("checkable").equals("false")) {
+                        element.click();
+                    }
+                }
+                break;
+
+            case "OFF" :
+                if(DataSource.getPlatform().equals("Android")) {
+                    if (element.getAttribute("checked").equals("true")) {
+                        element.click();
+                    }
+                }else if(DataSource.getPlatform().equals("iOS")){
+                    if(element.getAttribute("value").equals("1")) {
+                        element.click();
+                    }
+                }else if(DataSource.getPlatform().equals("iOS")){
+                    if(element.getAttribute("checkable").equals("true")) {
+                        element.click();
+                    }
+                }
+                break;
+
+            default:
+                break;
+        }
     }
 
-    public void selector(String select) {
+
+    public void selectorr(String select) {
        try {
            stringToElementByText(select).click();
             }
@@ -240,13 +287,34 @@ public class Base {
            }
        }
 
-    public void searchSelector(String template) {
+
+    public void selector(String select) {
+        try {
+            stringToElementByText(select).click();
+            if(DataSource.getPlatform().equals("iOS")){
+                try{
+                    stringToElementByText(select).click();}
+                catch(NoSuchElementException ignore){}
+            }
+        }
+        catch(NoSuchElementException e) {
+            scrollToElementByText("down",select);
+            stringToElementByText(select).click();
+            if(DataSource.getPlatform().equals("iOS")){
+                stringToElementByText(select).click();
+            }
+        }
+        sleep();
+    }
+
+
+    public void searchSelectorr(String template) {
         try {
             WebElement selectElement;
             if (DataSource.getPlatform().equals("Android")) {
                 selectElement = d.findElement(By.xpath("//android.widget.TextView[contains(@text,'" + template + "')]"));
             } else {
-                selectElement = d.findElement(By.xpath("//*[contains(@id," + template + ")]"));
+                selectElement = d.findElement(By.id("//*[contains(@id," + template + ")]"));
             }
             selectElement.click();
         }
@@ -256,12 +324,59 @@ public class Base {
                 if (DataSource.getPlatform().equals("Android")) {
                     selectElement = d.findElement(By.xpath("//android.widget.TextView[contains(@text,'" + template + "')]"));
                 } else {
-                    selectElement = d.findElement(By.xpath("//*[contains(@id," + template + ")]"));
+                    selectElement = d.findElement(By.id("//*[contains(@id," + template + ")]"));
                 }
                 selectElement.click();
         }
 
     }
+
+    public void searchSelector(String template) {
+        try {
+            WebElement selectElement;
+            if (DataSource.getPlatform().equals("Android")) {
+                selectElement = d.findElement(By.xpath("//android.widget.TextView[contains(@text,'" + template + "')]"));
+            } else {
+                selectElement = d.findElement(By.xpath("//XCUIElementTypeStaticText[contains(@name,'" + template + "')]"));
+            }
+            selectElement.click();
+        }
+        catch(NoSuchElementException e) {
+            scrollToElementByText("down",template);
+            WebElement selectElement;
+            if (DataSource.getPlatform().equals("Android")) {
+                selectElement = d.findElement(By.xpath("//android.widget.TextView[contains(@text,'" + template + "')]"));
+            } else {
+                selectElement = d.findElement(By.xpath("//XCUIElementTypeStaticText[contains(@name,'" + template + "')]"));
+            }
+            selectElement.click();
+        }
+
+    }
+
+    public void moreTemplateSelector(String more) {
+        try {
+            WebElement selectElement;
+            if (DataSource.getPlatform().equals("Android")) {
+                selectElement = d.findElement(By.xpath("//android.widget.TextView[contains(@text,'" + more + "')]"));
+            } else {
+                selectElement = d.findElement(By.xpath("(//XCUIElementTypeOther[contains(@name,'" + more + "')]//XCUIElementTypeImage[@name='ic_more'])"));
+            }
+            selectElement.click();
+        }
+        catch(NoSuchElementException e) {
+            scrollToElementByText("down",more);
+            WebElement selectElement;
+            if (DataSource.getPlatform().equals("Android")) {
+                selectElement = d.findElement(By.xpath("//android.widget.TextView[contains(@text,'" + more + "')]"));
+            } else {
+                selectElement = d.findElement(By.xpath("(//XCUIElementTypeOther[contains(@name,'" + more + "')]//XCUIElementTypeImage[@name='ic_more'])"));
+            }
+            selectElement.click();
+        }
+
+    }
+
 
     public void messageSelector(String message) {
         try {
@@ -282,6 +397,7 @@ public class Base {
                 selectElement = d.findElement(By.xpath("//*[@id," + message + "]"));
             }
             selectElement.click();
+
         }
 
     }
@@ -301,10 +417,20 @@ public class Base {
            if (DataSource.getPlatform().equals("Android")) {
                selectElement = d.findElementByXPath("//*[contains(@text,'" + select + "')]");
            } else {
-               selectElement = d.findElement(By.xpath("//*[contains(@id," + select + ")]"));
+               selectElement = d.findElementByXPath("(//XCUIElementTypeStaticText[contains(@name,'" + select + "')])[last()]");
            }
            return selectElement;
        }
+
+    public WebElement stringToElementByText2(String select){
+        WebElement selectElement;
+        if (DataSource.getPlatform().equals("Android")) {
+            selectElement = d.findElementByXPath("//*[contains(@text,'" + select + "')]");
+        } else {
+            selectElement = d.findElementByXPath("(//XCUIElementTypeStaticText[contains(@name,'" + select + "')])");
+        }
+        return selectElement;
+    }
 
     public WebElement stringToElementByDescription(String description){
         WebElement selectElement;
@@ -325,8 +451,19 @@ public class Base {
         }
         return selectElement;
     }
+    public WebElement transactionElement(String property){
+        WebElement selectElement;
+        String text = prop.getProperty(property);
 
-    public WebElement transactionElement(String desc, String text){
+        if (DataSource.getPlatform().equals("Android")) {
+            selectElement = d.findElementByXPath("//android.widget.TextView[@text='" + text + "']");
+        } else {
+            selectElement = d.findElementByXPath("(//XCUIElementTypeStaticText[contains(@name,'" + text + "')])[last()]");
+        }
+        return selectElement;
+    }
+
+    public WebElement transactionElement1(String desc, String text){
         WebElement selectElement;
         if (DataSource.getPlatform().equals("Android")) {
             selectElement = d.findElementByXPath("//*[contains(@content-desc,'" + desc + "') and contains(@text,'" + text + "')]");
@@ -380,6 +517,7 @@ public class Base {
             }
         }
     }
+
 
     public void verifyPage(WebElement el, String page) {
         sleep();
@@ -436,6 +574,145 @@ public class Base {
         }
     }
 
+    public void drag(WebElement element, int speed, String direction){
+
+        int startX = element.getLocation().getX();
+        int startY = element.getLocation().getY();
+
+        JavascriptExecutor j = d;
+        Map<String, Object> param = new HashMap<>();
+
+        switch(DataSource.getPlatform()) {
+            case "Android":
+                if (direction.equals("up")) {
+                    param.put("startX", startX);
+                    param.put("startY", startY);
+                    param.put("endX", startX);
+                    param.put("endY", startY-1000);
+                    param.put("speed", speed);
+                    j.executeScript("mobile: dragGesture", param);
+                }else if(direction.equals("down")){
+                    param.put("startX", startX);
+                    param.put("startY", startY);
+                    param.put("endX", startX);
+                    param.put("endY", startY+1000);
+                    param.put("speed", speed);
+                    j.executeScript("mobile: dragGesture", param);
+                }
+                break;
+
+            case "iOS":
+                if (direction.equals("up")) {
+                    param.put("duration", 1.0);
+                    param.put("fromX", startX);
+                    param.put("fromY", startY);
+                    param.put("toX", startX);
+                    param.put("toY", startY-500);
+                    j.executeScript("mobile: dragFromToForDuration", param);
+                }else if(direction.equals("down")){
+                    param.put("duration", 1.0);
+                    param.put("fromX", startX);
+                    param.put("fromY", startY);
+                    param.put("toX", startX);
+                    param.put("toY", startY+500);
+                    j.executeScript("mobile: dragFromToForDuration", param);
+                }
+                break;
+        }
+    }
+    /*
+    public void drag(WebElement element, int speed){
+
+        int startX = element.getLocation().getX();
+        int startY = element.getLocation().getY();
+        int endY = startY+500;
+
+        JavascriptExecutor j = d;
+        Map<String, Object> param = new HashMap<>();
+        if(DataSource.getPlatform().equals("Android")){
+            param.put("startX",startX);
+            param.put("startY", startY);
+            param.put("endX", startX);
+            param.put("endY", endY);
+            param.put("speed", speed);
+            j.executeScript("mobile: dragGesture", param);
+        }
+        else{
+            JavascriptExecutor js = (JavascriptExecutor) d;
+            Map<String, Object> params = new HashMap<>();
+            params.put("duration", 1.0);
+            params.put("fromX", startX);
+            params.put("fromY", startY);
+            params.put("toX", startX);
+            params.put("toY", endY);
+            js.executeScript("mobile: dragFromToForDuration", params);
+        }
+    }
+
+    public void drag(WebElement element, int speed, String direction){
+        switch (DataSource.getPlatform()) {
+            case "Android":
+                int startX = element.getLocation().getX();
+                int startY = element.getLocation().getY();
+                int endY = startY-500;
+
+                JavascriptExecutor j = d;
+                Map<String, Object> param = new HashMap<>();
+                if(direction.equals("down")){
+                    param.put("startX",startX);
+                    param.put("startY", startY);
+                    param.put("endX", startX);
+                    param.put("endY", endY);
+                    param.put("speed", speed);
+                    j.executeScript("mobile: dragGesture", param);
+                }
+                else{
+                JavascriptExecutor js = (JavascriptExecutor) d;
+                Map<String, Object> params = new HashMap<>();
+                params.put("duration", 1.0);
+                params.put("fromX", startX);
+                params.put("fromY", startY);
+                params.put("toX", startX);
+                params.put("toY", endY);
+                js.executeScript("mobile: dragFromToForDuration", params);
+                }
+
+                break;
+
+            case "iOS":
+                int startiosX = element.getLocation().getX();
+                int startiosY = element.getLocation().getY();
+                int endiosY = startiosY+500;
+
+                JavascriptExecutor i = d;
+                Map<String, Object> parame = new HashMap<>();
+                if(direction.equals("down")){
+                    parame.put("startX",startiosX);
+                    parame.put("startY", startiosY);
+                    parame.put("endX", startiosX);
+                    parame.put("endY", endiosY);
+                    parame.put("speed", speed);
+                    i.executeScript("mobile: dragGesture", parame);
+                }
+                else{
+                JavascriptExecutor js = (JavascriptExecutor) d;
+                Map<String, Object> params = new HashMap<>();
+                params.put("duration", 1.0);
+                params.put("fromX", startiosX);
+                params.put("fromY", startiosY);
+                params.put("toX", startiosX);
+                params.put("toY", endiosY);
+                js.executeScript("mobile: dragFromToForDuration", params);
+                 }
+                break;
+
+            default:
+                break;
+
+         }
+    }
+
+
     public void dragger(String select, String direction) {
 
         WebElement selectElement;
@@ -443,7 +720,7 @@ public class Base {
             selectElement = d.findElementByXPath("//*[contains(@content-desc,'" + select + "')]");
         }
         else{
-            selectElement = d.findElement(By.xpath("//*[contains(@id," + select + ")]"));
+            selectElement = d.findElement(By.xpath("//*[contains(@name," + select + ")]"));
         }
 
         TouchAction drag = new TouchAction(d);
@@ -463,7 +740,7 @@ public class Base {
         }
 
 
-    }
+    } */
 
     public void verifyCopyToClip(String detail) throws IOException, UnsupportedFlavorException {
         String myText = (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
@@ -498,6 +775,7 @@ public class Base {
                 break;
         }
     }
+
 
     public String day() {
         Calendar cal = Calendar.getInstance();
@@ -539,7 +817,7 @@ public class Base {
         return str;
     }
 
-    public void typeInProperty(WebElement field, String property) {
+   /* public void typeInProperty(WebElement field, String property) {
 
         try {
             prop.load(new FileInputStream(testData));
@@ -559,7 +837,7 @@ public class Base {
             int pressY = d.manage().window().getSize().height / 10;
             tap.press(PointOption.point(pressX,pressY)).release().perform();
         }
-    }
+    } */
 
     public void typeIn(WebElement field, String string) {
 
@@ -583,6 +861,40 @@ public class Base {
         }
     }
 
+    public void typeInProperty(WebElement field, String property) {
+
+        try {
+            prop.load(new FileInputStream(testData));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        field.click();
+        field.clear();
+        field.sendKeys(prop.getProperty(property));
+
+//        if (DataSource.getPlatform().equals("iOS")) {
+//
+//
+//            TouchAction tap = new TouchAction(d);
+//
+//            int pressX = d.manage().window().getSize().width / 2;
+//            int pressY = d.manage().window().getSize().height / 20;
+//            tap.press(PointOption.point(pressX,pressY)).release().perform();
+//        }
+//        else{}
+    }
+
+    public void closeIOSKeyboard(){
+        if (DataSource.getPlatform().equals("iOS")) {
+            TouchAction tap = new TouchAction(d);
+            int pressX = d.manage().window().getSize().width / 2;
+            int pressY = d.manage().window().getSize().height / 20;
+            tap.tap(PointOption.point(pressX,pressY)).release().perform();
+        }
+        else{}
+    }
+
     public void verifier(WebElement el1, String property ) {
 
         try {
@@ -596,6 +908,87 @@ public class Base {
         String errorMessage = "Found :" + element + " but expected " + propertyString;
         assertTrue(element.contains(propertyString), errorMessage);
     }
+
+    public void scroll(String direction, int speed, double percent) {
+        switch (DataSource.getPlatform()) {
+            case "Android":
+                JavascriptExecutor j = d;
+                Map<String, Object> param = new HashMap<>();
+                param.put("left", 100);
+                param.put("top", 800);
+                param.put("width", 200);
+                param.put("height", 600);
+                param.put("direction", direction);
+                param.put("percent", percent);
+                param.put("speed", speed);
+                j.executeScript("mobile: scrollGesture", param);
+                break;
+            case "iOS":
+
+                break;
+
+            default:
+                break;
+        }
+    }
+
+
+    public void scrollToElementByText(String direction, String objectDescription) {
+        int swipes = 5;
+        int attempt = 0;
+
+        switch(DataSource.getPlatform()) {
+            case "Android":
+                while (!isTextPresent(objectDescription)) {
+
+                    scroll(direction, 1000, 1.0);
+                    attempt++;
+
+                    if (isTextPresent(objectDescription)) {
+                        break;
+                    } else if (!isTextPresent(objectDescription) && attempt == swipes) {
+                        String error = "COULD NOT FIND: " + objectDescription;
+                        throw new Error(error);
+                    }
+                }
+                break;
+
+            case "iOS":
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    public void scrollToElement(String direction, WebElement object) {
+        int swipes = 5;
+        int attempt = 0;
+
+        switch(DataSource.getPlatform()) {
+            case "Android":
+                while (!isElementPresent(object)) {
+
+                    scroll(direction, 1000, 1.0);
+                    attempt++;
+
+                    if (isElementPresent(object)) {
+                        break;
+                    } else if (!isElementPresent(object) && attempt == swipes) {
+                        String error = "COULD NOT FIND: " + object;
+                        throw new Error(error);
+                    }
+                }
+                break;
+
+            case "iOS":
+                break;
+
+            default:
+                break;
+        }
+    }
+
 
     public void scrollMethod(int fromX, int fromY, int toX, int toY) {
         TouchAction touchAction = new TouchAction(d);
@@ -743,6 +1136,7 @@ public class Base {
         }
     }
 
+    /*
     public void swipe(String direction, int speed, double percent){
 
         int left = d.manage().window().getSize().width / 2;
@@ -758,7 +1152,47 @@ public class Base {
         param.put("direction", direction);
         param.put("percent",percent);
         param.put("speed", speed);
-        j.executeScript("mobile: swipeGesture", param);
+        j.executeScript("mobile: swipe", param);
+    } */
+
+    public void swipe(String direction, int speed, double percent){
+        sleep();
+        int left = d.manage().window().getSize().width / 2;
+        int top = d.manage().window().getSize().height / 3;
+
+        switch(DataSource.getPlatform()){
+            case "Android":
+                JavascriptExecutor j = d;
+                Map<String, Object> param = new HashMap<>();
+                param.put("left",left);
+                param.put("top",top);
+                param.put("width",500);
+                param.put("height",200);
+                param.put("direction", direction);
+                param.put("percent",percent);
+                param.put("speed", speed);
+                j.executeScript("mobile: swipe", param);
+                break;
+
+            case "iOS":
+                JavascriptExecutor js = d;
+                Map<String, Object> params = new HashMap<>();
+                params.put("duration", 1.0);
+                params.put("fromX", left);
+                params.put("fromY", top);
+                params.put("toY", top);
+                if(direction.equalsIgnoreCase("LEFT")){
+                    params.put("toX", left-left);
+                }else if(direction.equalsIgnoreCase("RIGHT")){
+                    params.put("toX", left+left);
+                }
+                js.executeScript("mobile: swipe", params);
+                break;
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + DataSource.getPlatform());
+
+        }
     }
 
     public void swipeByElement(WebElement element, String direction, int speed, double percent){
@@ -783,7 +1217,7 @@ public class Base {
         param.put("direction", "left");
         param.put("percent",percent);
         param.put("speed", speed);
-        j.executeScript("mobile: swipeGesture", param);
+        j.executeScript("mobile: swipe", param);
     }
 
     public void swipeRight(WebElement element, int speed, double percent){
@@ -794,7 +1228,18 @@ public class Base {
         param.put("direction", "right");
         param.put("percent",percent);
         param.put("speed", speed);
-        j.executeScript("mobile: swipeGesture", param);
+        j.executeScript("mobile: swipe", param);
+    }
+
+    public void swipeDown(WebElement element, int speed, double percent){
+        wait(element);
+        JavascriptExecutor j = d;
+        Map<String, Object> param = new HashMap<>();
+        param.put("elementId", ((RemoteWebElement) element).getId());
+        param.put("direction", "down");
+        param.put("percent",percent);
+        param.put("speed", speed);
+        j.executeScript("mobile: swipe", param);
     }
 
     public void swipeToElementByDescription(WebElement element, String objectDescription, int swipes) {
@@ -832,7 +1277,7 @@ public class Base {
                 params.put("velocity", 2500);
                 params.put("toVisible", "true");
                 params.put("element", ((RemoteWebElement) element).getId());
-                js.executeScript("mobile: swipeGesture", params);
+                js.executeScript("mobile: swipe", params);
 
                 break;
 
@@ -877,12 +1322,29 @@ public class Base {
                 else{
 
                 }
-                js.executeScript("mobile: dragFromToForDuration", params);
+                js.executeScript("mobile: swipe", params);
 
                 break;
 
             default:
                 throw new IllegalStateException("Unexpected value: " + platform.toUpperCase());
+        }
+    }
+
+    public void swipeToElementByDescription3(String direction, String objectDescription, int swipes) {
+        int attempt = 0;
+        while(!isDescriptionSelected(objectDescription)){
+
+            swipe(direction,5000,1.0);
+            attempt++;
+
+            if(isDescriptionSelected(objectDescription)){
+                break;
+            }
+            else if(!isDescriptionSelected(objectDescription) && attempt == swipes) {
+                String error = "COULD NOT FIND: " + objectDescription;
+                throw new Error(error);
+            }
         }
     }
 
@@ -932,6 +1394,24 @@ public class Base {
     }
 
     public void swipeToElementByText(String direction, String objectDescription, int swipes) {
+        int attempt = 0;
+        while(!isTextPresent(objectDescription)){
+
+            swipe(direction,5000,1.0);
+            attempt++;
+
+            if(isTextPresent(objectDescription)){
+                break;
+            }
+            else if(!isTextPresent(objectDescription) && attempt == swipes) {
+                String error = "COULD NOT FIND: " + objectDescription;
+                throw new Error(error);
+            }
+        }
+    }
+
+
+    public void swipeToElementByText2(String direction, String objectDescription, int swipes) {
 
         String platform = DataSource.getPlatform();
 
@@ -966,7 +1446,7 @@ public class Base {
                 params.put("fromY", 100);
                 params.put("toX", 200);
                 params.put("toY", 200);
-                js.executeScript("mobile: swipeGesture", params);
+                js.executeScript("mobile: swipe", params);
 
                 break;
 

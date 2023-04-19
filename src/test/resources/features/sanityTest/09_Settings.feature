@@ -5,7 +5,7 @@ Feature: SETTINGS PAGE TEST
   Background:
     Given user is logged in
     Then click More
-    Then go to Settings
+    Then go to SETTINGS
 
   @PersonalDetails
     Scenario: PERSONAL DETAILS
@@ -50,7 +50,7 @@ Feature: SETTINGS PAGE TEST
     Then enter PIN
     Then turn on Fast payments
     Then enter PIN
-    Then click X
+    Then click close
     Then go BACK
 
 #services

@@ -26,7 +26,7 @@ import static testSetup.Base.service;
 @CucumberOptions(
         features="src/test/resources/features",
         glue={"stepDefinitions","testSetup"},
-        tags={"@RegressionTest or @NegativeTest"},
+        tags={"@DomesticPayment"}, //@RegressionTest or @NegativeTest
         monochrome = true,
         strict = true,
         dryRun = false,
@@ -43,9 +43,9 @@ public class RegressionTestRunner extends AbstractTestNGCucumberTests {
     @BeforeTest
     public AppiumDriverLocalService startServer() throws IOException, ClassNotFoundException {
 
-        CreateTranslations.main();
-        ReloadClass.main();
-        DataSource.getAPK();
+        //CreateTranslations.main();
+        //ReloadClass.main();
+        //DataSource.getAPK();
 
         boolean flag = checkIfServerIsRunning(4723);
 
@@ -54,18 +54,18 @@ public class RegressionTestRunner extends AbstractTestNGCucumberTests {
         config.load(new FileInputStream(configData));
 
         if(!flag){
-            if(config.getProperty("platform").equals("IOS")) {
+            if(config.getProperty("platform").equals("iOS")) {
                 service = AppiumDriverLocalService.buildDefaultService()
                         .buildService(new AppiumServiceBuilder()
                                 .usingDriverExecutable(new File("/usr/local/bin/node"))
                                 .withAppiumJS(new File("/usr/local/lib/node_modules/appium/build/lib/main.js"))
-                                .withIPAddress("127.0.0.1")
+                                .withIPAddress("127.0.0.1").usingAnyFreePort()
                                 .withArgument(GeneralServerFlag.SESSION_OVERRIDE)
                                 .withArgument(GeneralServerFlag.LOG_LEVEL,"warn"));}
 
             else{
                 service = AppiumDriverLocalService.buildDefaultService()
-                        .buildService(new AppiumServiceBuilder()
+                        .buildService(new AppiumServiceBuilder().usingAnyFreePort()
                                 .withArgument(GeneralServerFlag.LOG_LEVEL,"warn"));
             }
             service.start();

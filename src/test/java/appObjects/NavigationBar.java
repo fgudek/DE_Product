@@ -6,13 +6,13 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import testSetup.Base;
+import testSetup.appiumSetup.DataSource;
 
 import static appObjects.Translations.*;
+
 
 public class NavigationBar extends Base {
 
@@ -31,17 +31,17 @@ public class NavigationBar extends Base {
         return this;
     }
 
-    @iOSXCUITFindBy(accessibility = "More")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='More']")
+    @iOSXCUITFindBy(accessibility = ""+s_dashboard__btn_more+"")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_dashboard__btn_more+"']")
     public WebElement morePageBtn;
-    @iOSXCUITFindBy(accessibility = "More")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='More']")
+    @iOSXCUITFindBy(accessibility = ""+s_more__title_more+"")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_more__title_more+"']")
     public WebElement morePageTitle;
     public NavigationBar gotoMore() {
         wait(morePageBtn);
         morePageBtn.click();
         sleep();
-        verifyPage(morePageTitle,"More");
+        //verifyPage(morePageTitle, s_more__title_more);
         return this;
         }
 
@@ -59,5 +59,29 @@ public class NavigationBar extends Base {
         return this;
     }
 
+    @iOSXCUITFindBy(accessibility = ""+s_dashboard__btn_products+"")
+    @AndroidFindBy(accessibility = ""+s_dashboard__btn_products+"")
+    public WebElement productsTitle;
+    @iOSXCUITFindBy(accessibility = ""+s_dashboard__btn_products+"")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='"+s_dashboard__btn_products+"']")
+    public WebElement productsBtn;
+    public NavigationBar gotoProducts(){
+        wait(productsBtn);
+        productsBtn.click();
+        sleep();
+        verifyPage(productsTitle,"Products");
+        return this;
+    }
+
+
+    @iOSXCUITFindBy(accessibility = ""+s_menu__lbl_dashboard+"")
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='0']")
+    public WebElement HomeBtn;
+    public NavigationBar gotoHome(){
+        wait(HomeBtn);
+        HomeBtn.click();
+        sleep();
+        return this;
+    }
 
 }

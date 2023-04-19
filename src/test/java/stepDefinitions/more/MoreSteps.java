@@ -55,13 +55,7 @@ public class MoreSteps extends Base {
     }
 
 
-    @Then("click Save")
-    public void clickSave() {
-        navigate
-                .clickButton();
-    }
-
-    @Then("go to Settings")
+    @Then("go to SETTINGS")
     public void goToSettings() {
         more
                 .settings();
@@ -80,10 +74,16 @@ public class MoreSteps extends Base {
                 .showBalanceOnPrelogin("off");
     }
 
-    @Then("click Documents")
+    @Then("go to DOCUMENTS")
     public void clickDocuments() {
         more
                 .documents();
+    }
+
+    @Then("go to Contracts tab")
+    public void clickContractsTab() {
+        more
+                .clickContractsTab();
     }
 
     @Then("go to documents settings")
@@ -120,5 +120,143 @@ public class MoreSteps extends Base {
     public void verifySuccessMessageAndClickOK() {
         more
                 .verifySuccessDocChange();
+    }
+
+    @Then("go to MTOKEN")
+    public void mTokenPostClick() {
+        more
+                .mTokenPostClick();
+    }
+
+    @Then("verify mToken screen")
+    public void verifymTokenTitleMore() {
+        more
+                .verifymTokenTitleMore();
+    }
+
+    @Then("go to LOCATIONS")
+    public void LocationsPostMoreClick() {
+        more
+                .LocationsPostMoreClick();
+    }
+
+    @Then("go to CONTACTS")
+    public void ContactsPostMoreClick() {
+        more
+                .ContactsPostMoreClick();
+    }
+
+    @Then("verify CONTACTS screen")
+    public void verifyContactsPage() {
+        more
+                .verifyContactsPage();
+    }
+
+    @Then("click Call us")
+    public void clickCallUs() {
+        more
+                .clickCallUs();
+    }
+
+    @Then("exit Call us modal")
+    public void exitCallUs() {
+        more
+                .exitCallUs();
+    }
+
+    @Then("click Find us")
+    public void clickFindUs() {
+        more
+                .clickFindUs();
+    }
+
+    @Then("click E-mail")
+    public void clickEmail() {
+        more
+                .clickEmail();
+    }
+
+    @Then("click FAQ")
+    public void clickFAQ() {
+        more
+                .clickFAQ();
+    }
+
+    @Then("open question about OTP")
+    public void openOTPQA() {
+        more
+                .openOTPQA();
+    }
+
+    @Then("close OTP question")
+    public void closeOTPQA() {
+        more
+                .openOTPQA();
+    }
+
+    @Then("open question about payment confirmation")
+    public void openPaymentInformationQA() {
+        more
+                .openPaymentConfQA();
+    }
+
+    @Then("close question about payment confirmation")
+    public void closePaymentInformationQA() {
+        more
+                .openPaymentConfQA();
+    }
+
+    @Then("click Tell a friend about us")
+    public void clickTellAFriend() {
+        more
+                .clickTellAFriend();
+    }
+
+    @Then("close Tell a friend about us")
+    public void closeTellAFriend() {
+        more
+                .closeTellAFriend();
+    }
+
+    @Then("go to Select user or company")
+    public void SelectUserOrCompanyClick() {
+        more
+                .SelectUserOrCompanyClick();
+    }
+
+    @Then("go to Select DEFAULT user or company")
+    public void SelectDefaultUserOrCompanyClick() {
+        more
+                .SelectDefaultUserOrCompanyClick();
+    }
+
+    @Then("verify modal for default user")
+    public void verifyDefUserModal() {
+        more
+                .verifyDefUserModal();
+    }
+
+    @Then("close Select DEFAULT user or company modal")
+    public void closeSelectDefaultUserOrCompanyPullBar() {
+        more
+                .closeSelectDefaultUserOrCompanyPullBar();
+    }
+
+    @Then("go to INBOX")
+    public void clickInboxMore() {
+        more
+                .clickInboxMore();
+    }
+
+    @Then("click NEW MESSAGE")
+    public void clickNewMessageBtn() {
+        more
+                .clickNewMessageBtn();
+    }
+
+    @Then("search for Notifications")
+    public void clickSearchBarSettings() {
+        more
+                .SearchBarSettings();
     }
 }

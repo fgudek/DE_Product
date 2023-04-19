@@ -29,15 +29,21 @@ public class ScanAndPaySteps extends Base {
     }
 
     @Then("go to Scan to pay")
+    public void goToScantopayDash() {
+        payment
+                .goToScanToPayDash();
+    }
+
+    @Then("go to SCAN TO PAY")
     public void goToScantopay() {
         payment
                 .goToScanToPay();
     }
 
-
-    @Then("verify Scan To Pay page")
-    public void verifyScanToPayPage() {
+    @Then("turn on flashlight")
+    public void turnFlashlight() {
+        payment
+                .turnFlashlight();
     }
-
 
 }
